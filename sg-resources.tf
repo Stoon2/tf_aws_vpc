@@ -1,7 +1,7 @@
 resource "aws_security_group" "allow_ssh_all" {
   name        = "allow_ssh"
   description = "Allow SSH inbound traffic"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = module.network.vpc_main_id
 
   ingress {
     description = "SSH from ALL"
@@ -27,14 +27,14 @@ resource "aws_security_group" "allow_ssh_all" {
 resource "aws_security_group" "allow_ssh_p3000_local" {
   name        = "allow_ssh_p3000_local"
   description = "Allow SSH and Port 3000 traffic locally"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = module.network.vpc_main_id
 
   ingress {
     description = "SSH local"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [aws_vpc.main.cidr_block]
+    cidr_blocks = [module.network.vpc_main_cidr]
   }
 
   ingress {
@@ -42,7 +42,7 @@ resource "aws_security_group" "allow_ssh_p3000_local" {
     from_port   = 3000
     to_port     = 3000
     protocol    = "tcp"
-    cidr_blocks = [aws_vpc.main.cidr_block]
+    cidr_blocks = [module.network.vpc_main_cidr]
   }
   egress {
     from_port   = 0

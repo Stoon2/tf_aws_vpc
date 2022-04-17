@@ -5,7 +5,7 @@ resource "aws_route_table" "pub-rtb-eu1a" {
     gateway_id = aws_internet_gateway.gw.id
   }
   tags = {
-    Name = "pub-rtb-eu1a"
+    Name = "pub-rtb-${var.az-1}"
   }
 }
 
@@ -16,6 +16,6 @@ resource "aws_route_table" "pub-rtb-eu1b" {
     gateway_id = aws_internet_gateway.gw.id
   }
   tags = {
-    Name = "pub-rtb-eu1b"
+    Name = "pub-rtb-${var.az-2}"
   }
 }

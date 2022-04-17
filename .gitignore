@@ -1,6 +1,3 @@
-variables.tf
-
-variables.tf
 
 # Local .terraform directories
 **/.terraform/*
@@ -41,3 +38,6 @@ terraform.rc
 terraform.tfstate
 terraform.tfstate.backup
 terraform.tfvars
+
+# Ignore any generated private keys
+*.pem

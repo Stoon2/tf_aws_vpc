@@ -5,7 +5,7 @@ resource "aws_route_table" "priv-rtb-eu1a" {
     nat_gateway_id = aws_nat_gateway.eu-1a-ngw.id
   }
   tags = {
-    Name = "priv-rtb-eu1a"
+    Name = "priv-rtb-${var.az-1}"
   }
 }
 
@@ -16,6 +16,6 @@ resource "aws_route_table" "priv-rtb-eu1b" {
     nat_gateway_id = aws_nat_gateway.eu-1b-ngw.id
   }
   tags = {
-    Name = "priv-rtb-eu1b"
+    Name = "priv-rtb-${var.az-2}"
   }
 }
