@@ -8,7 +8,10 @@ variable "key_name" {
 variable "ami_id" {
   description = "AMI Ubuntu"
   type        = string
-  default     = "ami-0d527b8c289b4af7f"
+  # EU instance
+  default = "ami-0d527b8c289b4af7f"
+  # US East Instance
+  # default = "ami-04505e74c0741db8d"
 }
 
 variable "instance_type" {
@@ -50,4 +53,32 @@ variable "az-1" {
 variable "az-2" {
   type        = string
   description = "second availibility zone"
+}
+
+# RDS configuration
+variable "rds_username" {
+  type = string
+}
+
+variable "rds_password" {
+  type = string
+}
+
+variable "rds_name" {
+  type = string
+}
+
+variable "email" {
+  type = string
+}
+
+variable "s3_bucket" {
+  type = string
+}
+
+variable "s3_bucket_arn" {
+  type = string
+}
+variable "region" {
+  type = string
 }

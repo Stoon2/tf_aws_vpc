@@ -56,3 +56,27 @@ resource "aws_security_group" "allow_ssh_p3000_local" {
   }
 }
 
+resource "aws_security_group" "allow_3306_local" {
+  name        = "allow_3306_local"
+  description = "Allow P3306 inbound traffic locally"
+  vpc_id      = module.network.vpc_main_id
+
+  ingress {
+    description = "P3306 from local"
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = [module.network.vpc_main_cidr]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "allow_tls"
+  }
+}
